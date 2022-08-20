@@ -18,10 +18,19 @@ else
   done
 fi
 
+echo $NUMBER
 
 echo "Guess the secret number between 1 and 1000:"
 until [[ $GUESS == $NUMBER ]]; do
   read GUESS
+
+  if [[ ! $GUESS =~ ^[0-9]+$ ]];then
+    echo "That is not an integer, guess again:"
+  elif [[ $GUESS -lt $NUMBER ]]; then
+    echo "It's lower than that, guess again:"
+  elif [[ $GUESS -gt $NUMBER ]]; then
+    echo "It's higher than that, guess again:"
+  fi
 
   (( TURNS++ ))
 done
