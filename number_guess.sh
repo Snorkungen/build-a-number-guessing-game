@@ -35,4 +35,6 @@ until [[ $GUESS == $NUMBER ]]; do
   (( TURNS++ ))
 done
 
+RESULT=$($PSQL "INSERT INTO games (name,turns) VALUES ('$NAME',$TURNS)")
+
 echo "You guessed it in $TURNS tries. The secret number was $NUMBER. Nice job!"
