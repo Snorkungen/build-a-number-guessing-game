@@ -18,8 +18,6 @@ else
   done
 fi
 
-echo $NUMBER
-
 echo "Guess the secret number between 1 and 1000:"
 until [[ $GUESS == $NUMBER ]]; do
   read GUESS
