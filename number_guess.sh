@@ -3,6 +3,7 @@
 PSQL="psql --username=freecodecamp --dbname=number_guess -t --no-align -c"
 
 NUMBER=$(($RANDOM % 1000 + 1))
+TURNS=0
 
 echo "Enter your username:"
 read NAME
@@ -16,3 +17,13 @@ else
     echo "Welcome back, $NAME! You have played $COUNT games, and your best game took $BEST guesses."
   done
 fi
+
+
+echo "Guess the secret number between 1 and 1000:"
+until [[ $GUESS == $NUMBER ]]; do
+  read GUESS
+
+  (( TURNS++ ))
+done
+
+echo "You guessed it in $TURNS tries. The secret number was $NUMBER. Nice job!"
